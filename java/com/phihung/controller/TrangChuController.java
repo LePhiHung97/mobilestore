@@ -28,7 +28,7 @@ public class TrangChuController {
 		
 		modelMap.addAttribute("sanPhams", sanPhams);
 		modelMap.addAttribute("danhMucSanPhams", danhMucSanPhams);
-		return "trangchu";
+		return "home";
 	}
 	
 }

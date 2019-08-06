@@ -18,23 +18,19 @@ public class NguoiDung  implements Serializable {
     private int manguoidung;
     private String hoten;
     private String diachi;
-    private String cmnd;
+    private String sodienthoai;
+    
     private String email;
     private String tendangnhap;
     private String matkhau;
+    
 
 
     @OneToOne
     @JoinColumn(name="machucvu")
     private ChucVu chucvu;
 
-    public String getCmnd() {
-        return cmnd;
-    }
-
-    public void setCmnd(String cmnd) {
-        this.cmnd = cmnd;
-    }
+ 
 
     public String getEmail() {
         return email;
@@ -91,6 +87,15 @@ public class NguoiDung  implements Serializable {
     public void setDiachi(String diachi) {
         this.diachi = diachi;
     }
+
+    public String getSodienthoai() {
+        return sodienthoai;
+    }
+
+    public void setSodienthoai(String sodienthoai) {
+        this.sodienthoai = sodienthoai;
+    }
+    
 
 }
 

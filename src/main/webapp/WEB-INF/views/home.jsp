@@ -51,7 +51,8 @@
                             </c:when>
 
                             <c:otherwise>
-                                <li><a href="dangnhap/">Đăng nhập </a></li>
+                            	<li><a href="registration/">Đăng kí</a>
+                                <li><a href="login/">Đăng nhập </a></li>
                             </c:otherwise>
                         </c:choose>
                         <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
