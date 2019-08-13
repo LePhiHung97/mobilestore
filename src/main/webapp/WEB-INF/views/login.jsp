@@ -17,7 +17,7 @@
 </head>
 <body>
 	<div class="container">
-		<form:form method="POST" modelAttribute="nguoidung" action="/login" class="form-signin">		
+		<form:form method="POST" modelAttribute="nguoidung" action="/app/login" class="form-signin">		
 
 			<div class="form-group">
 				<form:input type="text" path="email" class="form-control"

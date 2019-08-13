@@ -17,22 +17,22 @@ import com.phihung.validator.NguoiDungValidator;
 @EnableTransactionManagement
 public class SpringConfig {
 
-    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-	registry.addResourceHandler("/resource/**").addResourceLocations("/resources/*");
-    }
+	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+		registry.addResourceHandler("/resource/**").addResourceLocations("/resources/*");
+	}
 
-    // Messages properties config
-    @Bean
-    public MessageSource messageSource() {
-	ReloadableResourceBundleMessageSource bundleMessageSource = new ReloadableResourceBundleMessageSource();
-	bundleMessageSource.setBasename("classpath:messages");
-	bundleMessageSource.setDefaultEncoding("utf-8");
-	return bundleMessageSource;
-    }
+	// Messages properties config
+	@Bean
+	public MessageSource messageSource() {
+		ReloadableResourceBundleMessageSource bundleMessageSource = new ReloadableResourceBundleMessageSource();
+		bundleMessageSource.setBasename("classpath:messages");
+		bundleMessageSource.setDefaultEncoding("utf-8");
+		return bundleMessageSource;
+	}
 
-    // Sử dụng validator
-    @Bean
-    public NguoiDungValidator nguoidungValidator() {
-	return new NguoiDungValidator();
-    }
+	// validator
+	@Bean
+	public NguoiDungValidator nguoidungValidator() {
+		return new NguoiDungValidator();
+	}
 }

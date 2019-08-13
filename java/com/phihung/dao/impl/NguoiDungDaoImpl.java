@@ -20,13 +20,23 @@ public class NguoiDungDaoImpl implements NguoiDungDao {
 
 	@Transactional
 	public void themNguoiDung(NguoiDung nguoiDung) {
-		 Session session = sessionFactory.getCurrentSession();
-		 session.save(nguoiDung);
+		Session session = sessionFactory.getCurrentSession();
+		session.save(nguoiDung);
 	}
 
-	public void kiemTraNguoiDung(NguoiDung nguoiDung) {
-		
+	public boolean kiemTraNguoiDung(NguoiDung nguoiDung) {
+		return true;
 	}
 
-	
+	public int layMaNguoiDungMoiNhat() {
+		int maNguoiDungMax;
+		try {
+			Session session = sessionFactory.getCurrentSession();
+			maNguoiDungMax = (Integer) session.createQuery("select max(manguoidung) from nguoidung ").uniqueResult();
+		} catch (Exception ex) {
+			return 0;
+		}
+		return maNguoiDungMax;
+	}
+
 }
