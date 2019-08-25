@@ -11,13 +11,13 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Repository;
 
-import com.phihung.dao.SanPhamDao;
+import com.phihung.dao.ISanPhamDao;
 import com.phihung.entity.DanhMucSanPham;
 import com.phihung.entity.SanPham;
 
 @Repository
 @Scope(proxyMode = ScopedProxyMode.TARGET_CLASS)
-public class SanPhamDaoImpl implements SanPhamDao{
+public class SanPhamDaoImpl implements ISanPhamDao{
 
 	@Autowired
 	SessionFactory sessionFactory;

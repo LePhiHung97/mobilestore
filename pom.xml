@@ -9,7 +9,6 @@
 	<name>mobilestore Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 	<dependencies>
-
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
@@ -17,7 +16,7 @@
 			<scope>test</scope>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-config -->
+				<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-config -->
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-config</artifactId>
@@ -39,8 +38,13 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
-			<version>4.3.8.RELEASE</version>
+			<version>5.0.6.RELEASE</version>
 		</dependency>
+	
+
+		<!-- <dependency> <groupId>org.springframework.boot</groupId> <artifactId>spring-boot-starter-security</artifactId> 
+			<version>1.5.2.RELEASE</version> </dependency> <dependency> <groupId>org.springframework</groupId> 
+			<artifactId>spring-webmvc</artifactId> <version>4.3.8.RELEASE</version> </dependency> -->
 
 		<!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc -->
 		<dependency>
@@ -125,7 +129,19 @@
 			<artifactId>jackson-databind</artifactId>
 			<version>2.9.5</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.4</version>
+		</dependency>
 
+		<!-- http://mvnrepository.com/artifact/org.apache.commons/commons-email -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-email</artifactId>
+			<version>1.4</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<finalName>mobilestore</finalName>

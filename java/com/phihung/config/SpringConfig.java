@@ -4,17 +4,20 @@ import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 
-import com.phihung.validator.NguoiDungValidator;
+import com.phihung.validator.DangKiValidator;
+import com.phihung.validator.DangNhapValidator;
 
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackages = "com.phihung")
 @EnableTransactionManagement
+@PropertySource(value="classpath:application.properties")
 public class SpringConfig {
 
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
@@ -31,8 +34,11 @@ public class SpringConfig {
 	}
 
 	// validator
-	@Bean
-	public NguoiDungValidator nguoidungValidator() {
-		return new NguoiDungValidator();
+	@Bean DangKiValidator dangKiValidator() {
+		return new DangKiValidator();
+	}
+	
+	@Bean DangNhapValidator dangNhapValidator() {
+		return new DangNhapValidator();
 	}
 }

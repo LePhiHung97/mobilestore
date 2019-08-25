@@ -17,7 +17,7 @@
 </head>
 <body>
 	<div class="container">
-		<form:form method="POST" modelAttribute="nguoidung" action="/app/registration" class="form-signin" >
+		<form:form method="POST" modelAttribute="nguoidung" action="/mobilestore/registration" class="form-signin" >
 			<h2 class="form-signin-heading">Đăng kí tài khoản</h2>
 
 			<div class="form-group">
@@ -30,6 +30,12 @@
 				<form:input type="text" path="diachi" class="form-control"
 					placeholder="Địa chỉ"></form:input>
 				<form:errors path="diachi"></form:errors>
+			</div>
+			
+			<div class="form-group">
+				<form:input type="number" path="sodienthoai" class="form-control"
+					placeholder="Số điện thoại"/>
+				<form:errors path="sodienthoai"></form:errors>
 			</div>
 
 			<div class="form-group">

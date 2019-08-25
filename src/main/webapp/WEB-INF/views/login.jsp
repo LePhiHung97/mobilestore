@@ -7,7 +7,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-
 <title>Đăng nhập</title>
 <link
 	href="<c:url value="/resources/bootstrap/css/bootstrap.min.css" />"
@@ -17,12 +16,12 @@
 </head>
 <body>
 	<div class="container">
-		<form:form method="POST" modelAttribute="nguoidung" action="/app/login" class="form-signin">		
+		<form:form method="POST" modelAttribute="nguoidung" action="/mobilestore/login" class="form-signin">		
 
 			<div class="form-group">
-				<form:input type="text" path="email" class="form-control"
-					placeholder="Email"></form:input>
-				<form:errors path="email"></form:errors>
+				<form:input type="text" path="tendangnhap" class="form-control"
+					placeholder="Tên đăng nhập"></form:input>
+				<form:errors path="tendangnhap"></form:errors>
 			</div>
 
 			<div class="form-group">

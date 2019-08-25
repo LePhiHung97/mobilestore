@@ -17,15 +17,27 @@
 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd">
 
 	<context:component-scan
+		base-package="com.phihung.config" />
+	<context:component-scan
 		base-package="com.phihung.controller" />
 	<context:component-scan
 		base-package="com.phihung.dao" />
 	<context:component-scan
+		base-package="com.phihung.entity" />
+	<context:component-scan
+		base-package="com.phihung.event" />
+	<context:component-scan
+		base-package="com.phihung.security" />
+	<context:component-scan
 		base-package="com.phihung.service" />
 	<context:component-scan
-		base-package="com.phihung.impl" />
+		base-package="com.phihung.utils" />
 	<context:component-scan
 		base-package="com.phihung.validator" />
+
+
+
+
 
 	<import resource="classpath:IoC.xml" />
 
