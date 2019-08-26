@@ -72,7 +72,7 @@ public class NguoiDungController {
 
 		NguoiDung existNguoiDung = nguoiDungService.timTheoEmail(nguoiDung.getEmail());
 		if (existNguoiDung != null) {
-			bindingResult.rejectValue("email", "This email already exist!");
+			bindingResult.rejectValue("email", "Email đã tồn tại !");
 			return "/registration";
 		} else {
 			nguoiDungService.themNguoiDung(nguoiDung);
@@ -81,24 +81,31 @@ public class NguoiDungController {
 
 			model.addAttribute("email", nguoiDung.getEmail());
 			String message = "To confirm your account, please click here : "
-					+ "http://localhost:8080/confirm-account?token=" + confirmationToken.getConfirmationToken();
+					+ "http://localhost:8080/mobilestore/confirm-account?token="
+					+ confirmationToken.getToken();
 			EmailUtil.sendMail(nguoiDung.getEmail(), message);
-			return "confirm-account";
+			return "confirm-mail";
 		}
 
 	}
 
+	@RequestMapping(value = "/confirm-account", method = RequestMethod.GET)
 	public String confirmAccount(@RequestParam String token, ModelMap model) {
 
-		ConfirmationToken confirmationToken = confirmationTokenService.findByConfirmationToken(token);
-		if (confirmationToken != null) {
-			NguoiDung nguoiDung = nguoiDungService.timTheoEmail(confirmationToken.getNguoiDung().getEmail());
-			nguoiDungService.themNguoiDung(nguoiDung);
-			return "account-verrified";
-		} else {
+		ConfirmationToken confirmToken = confirmationTokenService.findByConfirmationToken(token);
 
+		if (confirmToken != null) {
+			NguoiDung nguoiDung = nguoiDungService.timTheoEmail(confirmToken.getNguoiDung().getEmail());
+			if (nguoiDung != null) {
+				return "confirm-success";
+			} else {
+				model.addAttribute("user-confirm-invalid", "Tài khoản xác thực email không đúng !");
+				return "confirm-fail";
+			}
+		} else {
+			model.addAttribute("token-invalid", "Đường dẫn không chính xác ! ");
+			return "confirm-fail";
 		}
-		return null;
 	}
 
 }

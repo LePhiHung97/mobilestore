@@ -4,12 +4,14 @@ import javax.transaction.Transactional;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Repository;
 
 import com.phihung.dao.INguoiDungDao;
+import com.phihung.entity.ConfirmationToken;
 import com.phihung.entity.NguoiDung;
 
 @Repository
@@ -55,14 +57,10 @@ public class NguoiDungDaoImpl implements INguoiDungDao {
 
 	@Transactional
 	public NguoiDung timTheoEmail(String email) {
-		NguoiDung nguoiDung = null;
-		try {
-			Session session = sessionFactory.getCurrentSession();
-			nguoiDung = session.get(NguoiDung.class, email);
-		} catch (Exception ex) {
-			System.out.println("Can't not find user with this email!");
-			return null;
-		}
+		Query query= sessionFactory.getCurrentSession().
+		        createQuery("from nguoidung nd where nd.email=:email");
+		query.setParameter("email", email);
+		NguoiDung nguoiDung  = (NguoiDung)query.uniqueResult();
 		return nguoiDung;
 	}
 

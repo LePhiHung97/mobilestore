@@ -4,6 +4,7 @@ import javax.transaction.Transactional;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
@@ -21,15 +22,11 @@ public class ConfirmationTokenDaoImpl implements IConfirmationTokenDao{
 
 	@Transactional
 	public ConfirmationToken findByConfirmationToken(String token) {
-		ConfirmationToken confirmationToken = null;
-		try {
-			Session session = sessionFactory.getCurrentSession();
-			confirmationToken = session.get(ConfirmationToken.class, token);
-		} catch (Exception ex) {
-			System.out.println("Can't not find token");
-			return null;
-		}
-		return confirmationToken;
+		Query query= sessionFactory.getCurrentSession().
+		        createQuery("from confirmationtoken ct where ct.token=:token");
+		query.setParameter("token", token);
+		ConfirmationToken confirmToken = (ConfirmationToken)query.uniqueResult();
+		return confirmToken;
 	}
 
 	@Transactional
