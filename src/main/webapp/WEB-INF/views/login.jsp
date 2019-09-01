@@ -29,7 +29,9 @@
 					placeholder="Mật khẩu"></form:input>
 				<form:errors path="matkhau"></form:errors>
 			</div>
-
+			<c:if test="${incorrect_account != null}">
+				<p>${incorrect_account}</p>
+			</c:if>
 			<button class="btn btn-lg btn-primary btn-block" type="submit">Đăng
 				nhập</button>
 		</form:form>
