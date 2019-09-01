@@ -48,6 +48,7 @@
                         <c:choose>
                             <c:when test="${user != null}">
                                <li> <a href="#">Xin chào, <span style="color:blue"> ${user}</span></a></li>
+                               <li><a href="/mobilestore/logout">Đăng xuất</a></li>
                             </c:when>
 
                             <c:otherwise>

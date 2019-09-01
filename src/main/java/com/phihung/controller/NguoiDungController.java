@@ -68,7 +68,6 @@ public class NguoiDungController {
 			model.addAttribute("incorrect_account", "Tài khoản hoặc mật khẩu không chính xác!");
 			return "/login";
 		}
-
 	}
 
 	@RequestMapping(value = "/registration", method = RequestMethod.GET)
@@ -102,6 +101,12 @@ public class NguoiDungController {
 			return "confirm-mail";
 		}
 
+	}
+	
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public String logout(HttpSession session) {
+		session.removeAttribute("user");
+		return "redirect:/";
 	}
 
 	@RequestMapping(value = "/confirm-account", method = RequestMethod.GET)
