@@ -1,7 +1,7 @@
 package com.phihung.service;
 
 import com.phihung.entity.NguoiDung;
-import com.phihung.entity.VerificationToken;
+
 
 public interface INguoiDungService {
     void themNguoiDung(NguoiDung nguoiDung);
@@ -9,7 +9,4 @@ public interface INguoiDungService {
     boolean kiemTraNguoiDung(NguoiDung nguoiDung);
     NguoiDung timTheoEmail(String email);
     NguoiDung timTheoTenDangNhap(String tenDangNhap);
-    NguoiDung timTheoToken(String verificationToken);
-    void createVerificationToken(NguoiDung nguoidung, String token);
-    VerificationToken getVerificationToken(String token);
 }

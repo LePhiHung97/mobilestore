@@ -5,9 +5,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.phihung.dao.INguoiDungDao;
-import com.phihung.dao.IVerificationTokenDao;
 import com.phihung.entity.NguoiDung;
-import com.phihung.entity.VerificationToken;
 import com.phihung.service.INguoiDungService;
 
 @Service
@@ -16,8 +14,7 @@ public class NguoiDungServiceImpl implements INguoiDungService {
 	@Autowired
 	INguoiDungDao nguoiDungDao;
 	
-	@Autowired
-	IVerificationTokenDao verificationTokenDao;
+
 	
 	@Autowired
 	private PasswordEncoder passwordEncoder;
@@ -36,20 +33,9 @@ public class NguoiDungServiceImpl implements INguoiDungService {
 		return nguoiDung;
 	}
 
-	public void createVerificationToken(NguoiDung nguoidung, String token) {
-		VerificationToken myToken = new VerificationToken(token,nguoidung);
-		verificationTokenDao.save(myToken);
-		
-	}
+	
 
-	public NguoiDung timTheoToken(String token) {
-		NguoiDung nguoidung = verificationTokenDao.findByToken(token).getNguoidung();
-		return nguoidung;
-	}
-
-	public VerificationToken getVerificationToken(String token) {
-		return verificationTokenDao.findByToken(token);
-	}
+	
 	private boolean emailExist(String email) {
 		NguoiDung nguoiDung = timTheoEmail(email);
 		if(nguoiDung != null)
@@ -68,6 +54,16 @@ public class NguoiDungServiceImpl implements INguoiDungService {
 			return false;
 		}
 		return nguoiDungDao.dangKiTaiKhoan(nguoiDung);
+	}
+
+	public NguoiDung timTheoToken(String verificationToken) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void createVerificationToken(NguoiDung nguoidung, String token) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	
