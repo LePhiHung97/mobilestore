@@ -87,7 +87,7 @@ public class NguoiDungController {
 
 		NguoiDung existNguoiDung = nguoiDungService.timTheoEmail(nguoiDung.getEmail());
 		if (existNguoiDung != null) {
-			bindingResult.rejectValue("email", "Email đã tồn tại !");
+			model.addAttribute("email_exists","Email đã tồn tại !");
 			return "/registration";
 		} else {
 			nguoiDungService.themNguoiDung(nguoiDung);

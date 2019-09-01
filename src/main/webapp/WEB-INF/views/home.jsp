@@ -41,9 +41,6 @@
                         <li><a href="#">Dịch vụ</a></li>
                         <li><a href="#">Liên hệ</a></li>
                     </ul>
-
-
-
                     <ul class="nav navbar-nav navbar-right">
                         <c:choose>
                             <c:when test="${user != null}">

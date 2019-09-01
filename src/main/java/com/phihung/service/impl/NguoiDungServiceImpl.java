@@ -48,11 +48,7 @@ public class NguoiDungServiceImpl implements INguoiDungService {
 	}
 
 	public boolean dangKiTaiKhoan(NguoiDung nguoiDung) {
-	
 		nguoiDung.setMatkhau(passwordEncoder.encode(nguoiDung.getMatkhau()));
-		if(emailExist(nguoiDung.getEmail())) {
-			return false;
-		}
 		return nguoiDungDao.dangKiTaiKhoan(nguoiDung);
 	}
 

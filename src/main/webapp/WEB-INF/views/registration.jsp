@@ -55,6 +55,9 @@
 					placeholder="Mật khẩu"></form:input>
 				<form:errors path="matkhau"></form:errors>
 			</div>
+			<c:if test="${email_exists != null}">
+				<p>${email_exists}</p>
+			</c:if>
 
 			<button class="btn btn-lg btn-primary btn-block" type="submit">Đăng
 				kí</button>
