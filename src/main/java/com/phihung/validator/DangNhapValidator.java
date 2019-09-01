@@ -17,7 +17,7 @@ public class DangNhapValidator implements Validator {
 	public void validate(Object o, Errors errors) {
 		NguoiDung nguoidung = (NguoiDung) o;
 		
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "tendangnhap", "field.required");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", "field.required");
 
 		if (nguoidung.getMatkhau().length() < 6 || nguoidung.getMatkhau().length() > 12)
 			errors.rejectValue("matkhau", "password.invalid");

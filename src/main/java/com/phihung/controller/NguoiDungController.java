@@ -1,6 +1,7 @@
 package com.phihung.controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
@@ -48,11 +49,26 @@ public class NguoiDungController {
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String submitLogin(@ModelAttribute("nguoidung") NguoiDung nguoidung, BindingResult bindingResult) {
-		dangNhapValidator.validate(nguoidung, bindingResult);
+	public String submitLogin(@ModelAttribute("nguoidung") NguoiDung nguoiDung, BindingResult bindingResult,
+			ModelMap model,HttpSession session) {
+		dangNhapValidator.validate(nguoiDung, bindingResult);
 		if (bindingResult.hasErrors())
 			return "/login";
-		return "success";
+
+		NguoiDung existNguoiDung = nguoiDungService.timTheoEmail(nguoiDung.getEmail());
+		if (existNguoiDung != null && nguoiDungService.kiemTraNguoiDung(nguoiDung, existNguoiDung)) {
+			if (existNguoiDung.getChucvu().getTenchucvu().equals("ADMIN")) {
+				model.addAttribute("user", existNguoiDung.getTendangnhap());
+				return "/mobilestore/manage/";
+			} else {
+				session.setAttribute("user", existNguoiDung);
+				return "redirect:/";
+			}
+		} else {
+			model.addAttribute("incorrect_account", "Tài khoản hoặc mật khẩu không chính xác!");
+			return "/login";
+		}
+
 	}
 
 	@RequestMapping(value = "/registration", method = RequestMethod.GET)
@@ -81,8 +97,7 @@ public class NguoiDungController {
 
 			model.addAttribute("email", nguoiDung.getEmail());
 			String message = "To confirm your account, please click here : "
-					+ "http://localhost:8080/mobilestore/confirm-account?token="
-					+ confirmationToken.getToken();
+					+ "http://localhost:8080/mobilestore/confirm-account?token=" + confirmationToken.getToken();
 			EmailUtil.sendMail(nguoiDung.getEmail(), message);
 			return "confirm-mail";
 		}

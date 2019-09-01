@@ -26,8 +26,15 @@ public class NguoiDungDaoImpl implements INguoiDungDao {
 		session.save(nguoiDung);
 	}
 
-	public boolean kiemTraNguoiDung(NguoiDung nguoiDung) {
-		return true;
+	@Transactional
+	public NguoiDung kiemTraNguoiDung(NguoiDung nguoiDung) {
+		Query query= sessionFactory.getCurrentSession().
+		        createQuery("from nguoidung nd where nd.tendangnhap=:tendangnhap and nd.matkhau=:matkhau");
+		query.setParameter("tendangnhap", nguoiDung.getTendangnhap());
+		query.setParameter("matkhau", nguoiDung.getMatkhau());
+		NguoiDung existNguoiDung  = (NguoiDung)query.uniqueResult();
+		return existNguoiDung;
+		
 	}
 
 	@Transactional
@@ -44,14 +51,10 @@ public class NguoiDungDaoImpl implements INguoiDungDao {
 
 	@Transactional
 	public NguoiDung timTheoTenDangNhap(String tenDangNhap) {
-		NguoiDung nguoiDung = null;
-		try {
-			Session session = sessionFactory.getCurrentSession();
-			nguoiDung = session.get(NguoiDung.class, tenDangNhap);
-		} catch (Exception ex) {
-			System.out.println("Can't not find user with this username!");
-			return null;
-		}
+		Query query= sessionFactory.getCurrentSession().
+		        createQuery("from nguoidung nd where nd.tendangnhap=:tendangnhap");
+		query.setParameter("tendangnhap", tenDangNhap);
+		NguoiDung nguoiDung  = (NguoiDung)query.uniqueResult();
 		return nguoiDung;
 	}
 

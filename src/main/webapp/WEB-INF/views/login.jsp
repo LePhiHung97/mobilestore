@@ -19,9 +19,9 @@
 		<form:form method="POST" modelAttribute="nguoidung" action="/mobilestore/login" class="form-signin">		
 
 			<div class="form-group">
-				<form:input type="text" path="tendangnhap" class="form-control"
-					placeholder="Tên đăng nhập"></form:input>
-				<form:errors path="tendangnhap"></form:errors>
+				<form:input type="text" path="email" class="form-control"
+					placeholder="Email"></form:input>
+				<form:errors path="email"></form:errors>
 			</div>
 
 			<div class="form-group">

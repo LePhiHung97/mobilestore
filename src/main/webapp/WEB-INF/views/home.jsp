@@ -47,7 +47,7 @@
                     <ul class="nav navbar-nav navbar-right">
                         <c:choose>
                             <c:when test="${user != null}">
-                               <li> <a href="#">Xin chào , <span style="color:blue"> ${user}</span></a></li>
+                               <li> <a href="#">Xin chào, <span style="color:blue"> ${user}</span></a></li>
                             </c:when>
 
                             <c:otherwise>
