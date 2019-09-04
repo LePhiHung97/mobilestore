@@ -31,12 +31,27 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().antMatchers("/newuser/**", "/delete-user-*", "/edit-user-*").access("hasRole('ADMIN')")
-				// .and().formLogin().loginPage("/login").loginProcessingUrl("/login").usernameParameter("tendangnhap").passwordParameter("matKhau")
-				.and().csrf().and().exceptionHandling().accessDeniedPage("/Access_Denied");
-	}
+		System.out.println("Web is protected with Spring Security");
 
-	/*
+		http.authorizeRequests()
+		.antMatchers("/login")
+			.permitAll()
+				/*
+				 * .and() .formLogin() .loginPage("/login") .defaultSuccessUrl("/")
+				 * .failureUrl("/login?error=true") .permitAll()
+				 */
+		.and()
+			.logout()
+				.logoutUrl("/logout")
+				.deleteCookies("JSESSIONID")
+		.and()
+			.exceptionHandling()
+				.accessDeniedPage("/access-denied");
+		 
+	}
+	
+
+	/*/Access_Denied
 	 * @Bean public PersistentTokenBasedRememberMeServices
 	 * getPersistentTokenBasedRememberMeServices() {
 	 * PersistentTokenBasedRememberMeServices tokenBasedservice = new

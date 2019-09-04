@@ -26,7 +26,7 @@ public class DanhMucDaoImpl implements IDanhMucDao {
 		List<DanhMucSanPham> danhMucSanPhams = new ArrayList<DanhMucSanPham>();
 		try {
 			Session session = sessionFactory.getCurrentSession();
-			Query query = session.createQuery(" select  dm from danhmucsanpham dm ");
+			Query query = session.createQuery(" select dm from danhmucsanpham dm ");
 
 			danhMucSanPhams = (List<DanhMucSanPham>) query.getResultList();
 		} catch (Exception e) {

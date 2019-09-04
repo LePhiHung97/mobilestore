@@ -18,5 +18,17 @@ public class SanPhamServiceImpl implements ISanPhamService {
 	public List<SanPham> layDanhSachSanPham() {
 		return sanPhamDao.layDanhSachSanPham();
 	}
+
+	public List<SanPham> LaySanPhamTheoMaDanhMuc(int madanhmuc) {
+		return sanPhamDao.LaySanPhamTheoMaDanhMuc(madanhmuc);
+	}
+	
+	public SanPham LayChiTietSanPhamTheoMa(int masanpham) {
+		return sanPhamDao.LayChiTietSanPhamTheoMa(masanpham);
+	}
+
+	
+
+	
 	
 }

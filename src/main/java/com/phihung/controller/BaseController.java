@@ -17,7 +17,7 @@ import com.phihung.service.IDanhMucService;
 import com.phihung.service.ISanPhamService;
 
 @Controller
-public class TrangChuController {
+public class BaseController {
 	
 	@Autowired
 	ISanPhamService sanPhamService;
@@ -36,6 +36,10 @@ public class TrangChuController {
 		if(nguoiDung != null)
 			modelMap.addAttribute("user", nguoiDung.getTendangnhap());
 		return "home";
+	}
+	@RequestMapping(value="/access-denied")
+	public String AccessDenied(ModelMap modelMap) {
+		return "access-denied";
 	}
 	
 }

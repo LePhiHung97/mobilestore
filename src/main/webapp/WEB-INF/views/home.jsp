@@ -1,6 +1,7 @@
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <html>
 <head>
 
@@ -23,18 +24,18 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="/app/" style="color:deepskyblue">Yame Shop</a>
+                    <a class="navbar-brand" href="/mobilestore/" style="color:deepskyblue">Yame Shop</a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li><a href="/">Trang chủ</a></li>
+                        <li><a href="/mobilestore/">Trang chủ</a></li>
                         <li class="dropdown open">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sản phẩm <span class="caret"></span></a>
                             <ul class="dropdown-menu ">
-                               <c:forEach var="value" items="${danhMucSanPham}">
-                                   <li><a href="/sanpham/${value.madanhmuc}/${value.tendanhmuc}">${value.tendanhmuc}</a></li>
+                               <c:forEach var="value" items="${danhMucSanPhams}">
+                                   <li><a href="product/${value.madanhmuc}/${value.tendanhmuc}">${value.tendanhmuc}</a></li>
                                </c:forEach>
                             </ul>
                         </li>
@@ -45,8 +46,11 @@
                         <c:choose>
                             <c:when test="${user != null}">
                                <li> <a href="#">Xin chào, <span style="color:blue"> ${user}</span></a></li>
-                               <li><a href="/mobilestore/logout">Đăng xuất</a></li>
-                            </c:when>
+                               <!-- <li><a href="/mobilestore/logout">Đăng xuất</a></li> -->
+								<li><form:form method="POST" action="/mobilestore/logout">
+									<input type="submit" value="Đăng xuất" />
+								</form:form></li>
+							</c:when>
 
                             <c:otherwise>
                             	<li><a href="registration/">Đăng kí</a>
@@ -89,11 +93,11 @@
     <div id="sanphammoi" class="container">
         <span>SẢN PHẨM MỚI</span>
         <div class="row">
-            <c:forEach var="sanpham" items="${danhSachSanPham}">
+            <c:forEach var="sanpham" items="${sanPhams}">
                 <div class="col-lg-3 ">
-                    <a href="/chitiet/${sanpham.masanpham}">
+                    <a href="/mobilestore/detail/${sanpham.masanpham}">
                         <div class="sanpham wow zoomIn">
-                            <img class="icon" src="<c:url value="/resources/images/sanpham/${sanpham.hinhsanpham}" />" alt="" ><br>
+                            <img class="icon" src="<c:url value="/resources/images/product/${sanpham.hinhsanpham}"/>" alt="" ><br>
                             <span class="ten">${sanpham.tensanpham}</span><br>
                             <span class="gia">${sanpham.giatien} VND</span>
                         </div>
@@ -141,4 +145,4 @@
     <script type="text/javascript" src="<c:url value="/resources/bootstrap/js/bootstrap.min.js" />"></script>--%>
 
 </body>
-</html>
+

@@ -34,6 +34,7 @@
 			</c:if>
 			<button class="btn btn-lg btn-primary btn-block" type="submit">Đăng
 				nhập</button>
+			 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 		</form:form>
 	</div>
 	<script

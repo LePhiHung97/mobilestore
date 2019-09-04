@@ -19,18 +19,17 @@ import com.phihung.entity.SanPham;
 
 @Repository
 @Scope(proxyMode = ScopedProxyMode.TARGET_CLASS)
-public class SanPhamDaoImpl implements ISanPhamDao{
+public class SanPhamDaoImpl implements ISanPhamDao {
 
 	@Autowired
 	SessionFactory sessionFactory;
-	
+
 	@Transactional
 	public List<SanPham> layDanhSachSanPham() {
 		List<SanPham> sanphams = new ArrayList<SanPham>();
 		try {
 			Session session = sessionFactory.getCurrentSession();
 			Query query = session.createQuery("select sp from sanpham sp");
-
 			sanphams = (List<SanPham>) query.getResultList();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
@@ -38,7 +37,21 @@ public class SanPhamDaoImpl implements ISanPhamDao{
 		return sanphams;
 	}
 
-	
-	
-	
+	@Transactional
+	public List<SanPham> LaySanPhamTheoMaDanhMuc(int madanhmuc) {
+		Session session = sessionFactory.getCurrentSession();
+		String query = "from sanpham  sp where sp.danhmucsanpham.madanhmuc =" + madanhmuc;
+		List<SanPham> sanphams = (List<SanPham>) session.createQuery(query).getResultList();
+		return sanphams;
+
+	}
+
+	@Transactional
+	public SanPham LayChiTietSanPhamTheoMa(int masanpham) {
+		Session session = sessionFactory.getCurrentSession();
+		String query = "from sanpham sp where sp.masanpham =" + masanpham;
+		SanPham sanPham = (SanPham) session.createQuery(query).getSingleResult();
+		return sanPham;
+	}
+
 }

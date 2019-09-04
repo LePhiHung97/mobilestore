@@ -103,10 +103,10 @@ public class NguoiDungController {
 
 	}
 	
-	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	@RequestMapping(value = "/logout", method = RequestMethod.POST)
 	public String logout(HttpSession session) {
 		session.removeAttribute("user");
-		return "redirect:/";
+		return "login";
 	}
 
 	@RequestMapping(value = "/confirm-account", method = RequestMethod.GET)
