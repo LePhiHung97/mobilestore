@@ -6,6 +6,7 @@
 <script type="text/javascript" src="<c:url value="/resources/wow/wow.js" />"></script>
 <script type="text/javascript" src="<c:url value="/resources/wow/wow.min.js" />"></script>
 <script>
+	
     new WOW().init();
 
 </script>

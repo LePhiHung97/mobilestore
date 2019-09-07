@@ -30,12 +30,12 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" >
                     <ul class="nav navbar-nav">
                         <li><a href="/mobilestore/">Trang chủ</a></li>
-                        <li class="dropdown open">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sản phẩm <span class="caret"></span></a>
                             <ul class="dropdown-menu ">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something else here</a></li>
+                               <c:forEach var="value" items="${danhmucsanpham}">
+                                   <li><a href="/mobilestore/product/${value.madanhmuc}/${value.tendanhmuc}">${value.tendanhmuc}</a></li>
+                               </c:forEach>
                             </ul>
                         </li>
                         <li><a href="#">Dịch vụ</a></li>
@@ -44,7 +44,7 @@
                     </ul>
 
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="login/"">Đăng nhập </a></li>
+                        <li><a href="/mobilestore/login/"">Đăng nhập </a></li>
                         <%--<li><a href="#"><span class="glyphicon glyphicon-shopping-cart">--%>
                                    <%--<div class="product-number" style="  height: 20px;--%>
     <%--text-align: center;--%>
@@ -128,7 +128,7 @@
                                 </c:forEach>
                             </tbody>
                         </table>
-                        <button type="button" class="btn btn-default" data-position="bottom-right">Thêm vào giỏ hàng/button>
+                        <button type="button" class="btn btn-success" data-position="bottom-right">Thêm vào giỏ hàng</button>
                     </div>
 
                 </div>
@@ -146,7 +146,7 @@
     <div id="footer" class="container-fluid">
         <div class="row">
             <div class="col-md-4 wow flash">
-                <span class="title-footer">Thông Tin Shop</span><br><br>
+                <span class="title-footer">Giới thiệu</span><br><br>
                 <span class="info-title-footer">Yame là một thương hiệu thời trang đầy uy tín đảm bảo chất lượng sản phẩm tốt nhất cho khách hàng</span><br>
                 <span class="info-title-footer">Nhiều sản phẩm với mẫu mã đa dạng</span><br>
                 <span class="info-title-footer">Giá thành hợp lí</span><br>
@@ -169,7 +169,6 @@
                 </form>
             </div>
         </div>
-
     </div>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 

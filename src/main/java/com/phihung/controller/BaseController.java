@@ -42,4 +42,9 @@ public class BaseController {
 		return "access-denied";
 	}
 	
+	@RequestMapping(value="/manage")
+	public String Manage(ModelMap modelMap) {
+		return "manage";
+		
+	}
 }

@@ -29,8 +29,12 @@ public class SanPhamController {
 
         List<SanPham> sanPhamList = sanPhamService.LaySanPhamTheoMaDanhMuc(madanhmuc);
         modelMap.addAttribute("danhsachsanpham",sanPhamList);
-
         modelMap.addAttribute("tendanhmuc",tendanhmuc);
+        
+        List<DanhMucSanPham> danhMucSanPhams = danhMucService.layDanhSachDanhMuc();
+		modelMap.addAttribute("danhMucSanPhams", danhMucSanPhams);
+        
+        
         return "product";
 	}
 	
