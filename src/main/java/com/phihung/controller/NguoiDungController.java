@@ -58,8 +58,8 @@ public class NguoiDungController {
 		NguoiDung existNguoiDung = nguoiDungService.timTheoEmail(nguoiDung.getEmail());
 		if (existNguoiDung != null && nguoiDungService.kiemTraNguoiDung(nguoiDung, existNguoiDung)) {
 			if (existNguoiDung.getChucvu().getTenchucvu().equals("ADMIN")) {
-				model.addAttribute("user", existNguoiDung.getTendangnhap());
-				return "/mobilestore/manage/";
+				session.setAttribute("user", existNguoiDung);
+				return "redirect:/manage";
 			} else {
 				session.setAttribute("user", existNguoiDung);
 				return "redirect:/";

@@ -27,6 +27,7 @@
 
         //Thêm sản phẩm vào giỏ hàng
         $(".btn-giohang").click(function () {
+            
             var machitietsanpham = $(this).attr("data-chitietsanpham");
             var mamau = $(this).closest("tr").find(".mau").attr("data-mau");
             var tenmau = $(this).closest("tr").find(".mau").text();
@@ -38,7 +39,7 @@
             var giatien = $("#giatien").attr("data-value");
 
             $.ajax({
-                url: "http://localhost:8080/api/ThemGioHang",
+                url: "http://localhost:8080/mobilestore/api/AddToCart",
                 type: "GET",
                 data: {
                     masp: masp,
@@ -143,7 +144,7 @@
             var masanpham = parseInt( $(this).closest("tr").find(".masanpham").attr("data-masanpham"));
 
                 $.ajax({
-                    url:"http://localhost:8080/api/XoaSanPham",
+                    url:"http://localhost:8080/mobilestore/api/delete-product",
                     type:"GET",
                     data:{
                         masanpham:masanpham,

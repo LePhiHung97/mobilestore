@@ -8,8 +8,8 @@
     <jsp:include page="header.jsp"></jsp:include>
     <link rel="stylesheet" href="<c:url value="/resources/css/style.css"/>">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-    <script type="text/javascript" src="/resources/custom.js"></script>
-    <script type="text/javascript" src="/resources/jquery/alert.js"></script>
+    <script type="text/javascript" src="<c:url value="/resources/custom.js"/>"></script>
+    <script type="text/javascript" src="<c:url value="/resources/jquery/alert.js"/>"></script>
 </head>
 <body>
     <div  class="container-fluid">
@@ -89,6 +89,15 @@
     </div>
 
     <div class="container">
+    	<div class="row">
+    		<p></p>
+    	</div>
+    	<div class="row">
+    		<p></p>
+    	</div>
+    	<div class="row" style="margin-top:3px;">
+    		<p></p>
+    	</div>
         <div class="row">
             <div class="col-sm-2 col-md-2">
                 <h4 style="margin-top: -1px"><strong>Danh mục </strong></h4>
@@ -113,7 +122,7 @@
 
                         <table class="table">
                             <thead>
-                            <td><strong>Màu sản phẩm</strong></td>
+                            <td><strong>Màu</strong></td>
                             <td><strong>Size</strong></td>
                             <td><strong>Số lượng</strong></td>
                             </thead>
@@ -123,12 +132,12 @@
                                         <td class="mau" data-mau="${chitietsanpham.mau.mamau}">${chitietsanpham.mau.tenmau}</td>
                                         <td class="size" data-size="${chitietsanpham.size.masize}">${chitietsanpham.size.size}</td>
                                         <td class="soluong" data-soluong="${chitietsanpham.soluong}">${chitietsanpham.soluong}</td>
-                                        <td><button  data-chitietsanpham ="${chitietsanpham.machitietsanpham}" type="button" class="btn btn-danger btn-giohang">Giỏ hàng</button></td>
+                                        <td><button  data-chitietsanpham ="${chitietsanpham.machitietsanpham}" type="button" class="btn btn-success btn-giohang">Thêm vào giỏ</button></td>
                                     </tr>
                                 </c:forEach>
                             </tbody>
                         </table>
-                        <button type="button" class="btn btn-success" data-position="bottom-right">Thêm vào giỏ hàng</button>
+                       
                     </div>
 
                 </div>
@@ -172,7 +181,7 @@
     </div>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
-    <script src="/resources/jquery/alert.js"></script>
+    <script src="<c:url value="/resources/jquery/alert.js"/>"></script>
 
     <jsp:include page="footer.jsp"></jsp:include>
 

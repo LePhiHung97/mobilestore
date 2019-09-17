@@ -45,6 +45,5 @@ public class BaseController {
 	@RequestMapping(value="/manage")
 	public String Manage(ModelMap modelMap) {
 		return "manage";
-		
 	}
 }

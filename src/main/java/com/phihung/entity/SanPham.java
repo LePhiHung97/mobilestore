@@ -22,10 +22,14 @@ public class SanPham {
     @JoinColumn(name="masanpham")
     Set<ChiTietSanPham> chitietsanpham;
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name="chitietkhuyenmai",joinColumns = {@JoinColumn(name = "masanpham",referencedColumnName = "masanpham")},
-    inverseJoinColumns = {@JoinColumn(name="makhuyenmai",referencedColumnName = "makhuyenmai")})
-    Set<KhuyenMai> danhsachkhuyenmai;
+	/*
+	 * @ManyToMany(cascade = CascadeType.ALL)
+	 * 
+	 * @JoinTable(name="chitietkhuyenmai",joinColumns = {@JoinColumn(name =
+	 * "masanpham",referencedColumnName = "masanpham")}, inverseJoinColumns =
+	 * {@JoinColumn(name="makhuyenmai",referencedColumnName = "makhuyenmai")})
+	 * Set<KhuyenMai> danhsachkhuyenmai;
+	 */
 
     public int getMasanpham() {
         return masanpham;

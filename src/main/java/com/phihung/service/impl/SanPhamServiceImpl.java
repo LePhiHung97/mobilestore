@@ -14,7 +14,7 @@ public class SanPhamServiceImpl implements ISanPhamService {
 
 	@Autowired
 	ISanPhamDao sanPhamDao;
-	
+
 	public List<SanPham> layDanhSachSanPham() {
 		return sanPhamDao.layDanhSachSanPham();
 	}
@@ -22,13 +22,13 @@ public class SanPhamServiceImpl implements ISanPhamService {
 	public List<SanPham> LaySanPhamTheoMaDanhMuc(int madanhmuc) {
 		return sanPhamDao.LaySanPhamTheoMaDanhMuc(madanhmuc);
 	}
-	
+
 	public SanPham LayChiTietSanPhamTheoMa(int masanpham) {
 		return sanPhamDao.LayChiTietSanPhamTheoMa(masanpham);
 	}
 
-	
+	public void XoaSanPham(int masanpham) {
+		sanPhamDao.xoaSanPham(masanpham);
+	}
 
-	
-	
 }

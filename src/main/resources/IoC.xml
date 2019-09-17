@@ -36,7 +36,7 @@
 			<!--</value> -->
 			<props>
 				<prop key="hibernate.formatsql">true</prop>
-				<prop key="hibernate.showsql">true</prop>
+				<prop key="hibernate.show_sql">true</prop>
 				<prop key="connection.autocommit">true</prop>
 			</props>
 		</property>

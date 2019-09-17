@@ -6,9 +6,43 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 
 @Controller
-@RequestMapping("api/")
+@RequestMapping("/api")
 @SessionAttributes("giohangList")
 public class APIController {
+	@GetMapping("/AddToCart")
+	@ResponseBody
+	public void ThemGioHang(@RequestParam int masp, @RequestParam String tensp, @RequestParam int mamau,
+			@RequestParam String tenmau, @RequestParam int masize, @RequestParam String tensize,
+			@RequestParam String giatien, @RequestParam int soluong, @RequestParam int machitietsanpham,
+			HttpSession httpSession) {
+		List<GioHang> gioHangList = new ArrayList<GioHang>();
+
+		// Nếu session chưa tồn tại -> Thêm mới
+		if (null == httpSession.getAttribute("giohangList")) {
+			GioHang objGioHang = new GioHang(masp, masize, mamau, tensp, giatien, tenmau, tensize, 1, machitietsanpham);
+			gioHangList.add(objGioHang);
+			httpSession.setAttribute("giohangList", gioHangList);
+
+			System.out.println(gioHangList.size() + "");
+
+		}
+		// Nếu nhấn thêm một sản phẩm 2 lần ( tức là mua với số lượng là 2)
+		else {
+			gioHangList = (List<GioHang>) httpSession.getAttribute("giohangList");
+			int vitrisanpham = KiemTraSanPhamTonTai(gioHangList, httpSession, masp, masize, mamau);
+			if (vitrisanpham == -1) {
+				GioHang objGioHang = new GioHang(masp, masize, mamau, tensp, giatien, tenmau, tensize, 1,
+						machitietsanpham);
+				gioHangList.add(objGioHang);
+			} else {
+				int soluongcu = gioHangList.get(vitrisanpham).getSoluong();
+				gioHangList.get(vitrisanpham).setSoluong(soluongcu + 1);
+			}
+			System.out.println(gioHangList.size() + "");
+		}
+	}
+	/*--------------------------------------------------------------------------------*/
+	
 
 /*
     @Autowired
@@ -20,6 +54,7 @@ public class APIController {
     @Autowired
     ServletContext context;
 
+	
     @GetMapping("KiemTraDangNhap")
     public String  KiemTraDangNhap(@RequestParam String email, @RequestParam String matkhau){
         boolean kiemtra = nhanVienService.KiemTraDangNhap(email,matkhau);
@@ -236,7 +271,7 @@ public class APIController {
 
     }
 */
-
+	
 
 
 }

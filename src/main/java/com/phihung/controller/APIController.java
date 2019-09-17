@@ -1,14 +1,32 @@
 package com.phihung.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
+
+import com.phihung.service.ISanPhamService;
 
 
 @Controller
 @RequestMapping("api/")
 @SessionAttributes("giohangList")
 public class APIController {
+	
+	@Autowired
+    ISanPhamService sanPhamService;
+	
+	
+	@GetMapping("delete-product")
+	@ResponseBody
+	public void XoaSanPham(@RequestParam int masanpham) {
+		System.out.println("Xoa san pham");
+		sanPhamService.XoaSanPham(masanpham);
+	}
+
 
 /*
     @Autowired
@@ -132,60 +150,7 @@ public class APIController {
 
 
 
-    @PostMapping("ThemSanPham")
-    @ResponseBody
-    public void ThemSanPham(@RequestParam String dataJson){
-        System.out.println("Them san pham");
-//        ObjectMapper objectMapper = new ObjectMapper();
-//        objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-//        JsonNode jsonObject;
-//        try{
-//            jsonObject = objectMapper.readTree(dataJson);
-//
-//            SanPham sanpham = objectMapper.readValue(dataJson,SanPham.class);
-//
-//            DanhMucSanPham danhmucsanpham = new DanhMucSanPham();
-//            danhmucsanpham.setMadanhmuc(1);
-//
-//            JsonNode jsonChiTiet = jsonObject.get("chitietsanpham");
-//            Set<ChiTietSanPham> chiTietSanPhamSet =new HashSet<ChiTietSanPham>();
-//            for(JsonNode objChiTiet : jsonChiTiet)
-//            {
-//                ChiTietSanPham chiTietSanPham = new ChiTietSanPham();
-//
-//                MauSanPham mauSanPham = new MauSanPham();
-//                mauSanPham.setMamau(objChiTiet.get("mausanpham").asInt());
-//
-//                Size size = new Size();
-//                size.setMasize(objChiTiet.get("size").asInt());
-//
-//                chiTietSanPham.setMau(mauSanPham);
-//                chiTietSanPham.setSize(size);
-//                chiTietSanPham.setSoluong(objChiTiet.get("soluong").asInt());
-//
-//                chiTietSanPhamSet.add(chiTietSanPham);
-//            }
-//
-//            String tensanpham = jsonObject.get("tensanpham").asText();
-//            String giatien = jsonObject.get("giatien").asText();
-//            String hinhsanpham = jsonObject.get("hinhsanpham").asText();
-//
-//            sanpham.setChitietsanpham(chiTietSanPhamSet);
-//            sanpham.setDanhMucSanPham(danhmucsanpham);
-//            sanpham.setTensanpham(tensanpham);
-//            sanpham.setGiatien(giatien);
-//            sanpham.setHinhsanpham(hinhsanpham);
-//
-//
-//           sanPhamService.ThemSanPham(sanpham);
-//
-//        }
-//        catch (Exception ex)
-//        {
-//            System.out.println(ex.getMessage());
-//        }
-
-    }
+  
 
     @PostMapping(path="LayDanhSachSanPhamTheoMa",produces = "application/json;charset=utf8")
     @ResponseBody

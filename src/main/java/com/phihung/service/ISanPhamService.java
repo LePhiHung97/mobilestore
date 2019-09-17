@@ -11,5 +11,7 @@ public interface ISanPhamService {
 	
 	public SanPham LayChiTietSanPhamTheoMa(int masanpham);
 	
+	public void XoaSanPham(int masanpham);
+	
 }
  
