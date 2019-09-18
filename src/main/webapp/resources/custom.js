@@ -188,6 +188,13 @@
 
             event.preventDefault();
         });
+        
+      /* //Xóa chi tiết sản phẩm
+        $("body").off('click').on("click",".btn-xoachitiet",function (event) {
+
+        	$(this).parents()[2].setAttribute("style", "background-color: red;");
+            event.preventDefault();
+        });*/
 
         //Mở modal
         $(".btn-modal-themsanpham").click(function () {
@@ -200,7 +207,7 @@
               var formdata = $("#form-sanpham").serializeArray();
 
               json = {};
-              json = json.replaceAll("^\"|\"$|\\\\", "");
+              //json = json.toString().replaceAll("^\"|\"$|\\\\", "");
               arrChiTiet =[];
 
               //Set giá trị json dưới dạng name:value
@@ -238,13 +245,14 @@
 
                //Truyền tham số json cho controller
                $.ajax({
-                   url:"http://localhost:8080/api/ThemSanPham",
-                   type:"POST",
+                   url: "http://localhost:8080/mobilestore/api/add-product",
+                   type: "POST",
                    data:{
                        dataJson :JSON.stringify(json)
                    },
+                  
                    success: function (value) {
-
+                	  alert("Hung Le Phi");
                    }
                });
        });

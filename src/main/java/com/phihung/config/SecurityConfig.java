@@ -43,10 +43,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.and()
 			.logout()
 				.logoutUrl("/logout")
-				.deleteCookies("JSESSIONID")
-		.and()
+				.deleteCookies("JSESSIONID");
+	/*	.and()
 			.exceptionHandling()
-				.accessDeniedPage("/access-denied");
+				.accessDeniedPage("/access-denied");*/
 		 
 	}
 	

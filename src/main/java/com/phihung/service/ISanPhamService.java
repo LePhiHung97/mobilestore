@@ -13,5 +13,7 @@ public interface ISanPhamService {
 	
 	public void XoaSanPham(int masanpham);
 	
+	public void themSanPham(SanPham sanpham);
+	
 }
  

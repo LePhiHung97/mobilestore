@@ -8,10 +8,10 @@ import java.util.Set;
 public class DanhMucSanPham {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int madanhmuc;
     private String tendanhmuc;
-    private String hinhdanhmuc;
+    
 
     @OneToMany
     @JoinColumn(name="madanhmuc")
@@ -41,11 +41,5 @@ public class DanhMucSanPham {
         this.tendanhmuc = tendanhmuc;
     }
 
-    public String getHinhdanhmuc() {
-        return hinhdanhmuc;
-    }
-
-    public void setHinhdanhmuc(String hinhdanhmuc) {
-        this.hinhdanhmuc = hinhdanhmuc;
-    }
+   
 }

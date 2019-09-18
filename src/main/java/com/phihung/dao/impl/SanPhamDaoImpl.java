@@ -2,7 +2,6 @@ package com.phihung.dao.impl;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 import javax.transaction.Transactional;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -11,9 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Repository;
-
 import com.phihung.dao.ISanPhamDao;
-import com.phihung.entity.ChiTietSanPham;
 import com.phihung.entity.SanPham;
 
 @Repository
@@ -42,7 +39,6 @@ public class SanPhamDaoImpl implements ISanPhamDao {
 		String query = "from sanpham  sp where sp.danhmucsanpham.madanhmuc =" + madanhmuc;
 		List<SanPham> sanphams = (List<SanPham>) session.createQuery(query).getResultList();
 		return sanphams;
-
 	}
 
 	@Transactional
@@ -57,15 +53,14 @@ public class SanPhamDaoImpl implements ISanPhamDao {
 	public void xoaSanPham(int masanpham) {
 		Session session = sessionFactory.getCurrentSession();
 		SanPham sanPham = session.get(SanPham.class, masanpham);
-		/*
-		 * Set<ChiTietSanPham> chiTietSanPhamSet = sanPham.getChitietsanpham(); int
-		 * deletedRows = 0; for (ChiTietSanPham ctsp : chiTietSanPhamSet) { String hql =
-		 * "delete chitietsanpham ct where  ct.sanpham.masanpham = :masanpham"; Query
-		 * query = session.createQuery(hql); query.setParameter("masanpham", masanpham);
-		 * deletedRows = query.executeUpdate(); System.out.println(deletedRows); }
-		 */
-		session.createQuery("delete chitietsanpham where masanpham = "+masanpham).executeUpdate();
+		session.createQuery("delete chitietsanpham where masanpham = " + masanpham).executeUpdate();
 		session.createQuery("delete sanpham  where masanpham = " + masanpham).executeUpdate();
+	}
+
+	@Transactional
+	public void themSanPham(SanPham sanpham) {
+		Session session = sessionFactory.getCurrentSession();
+		session.save(sanpham);
 	}
 
 }

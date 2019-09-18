@@ -14,7 +14,9 @@
 
 <link href="<c:url value="/resources/assets/css/colorbox.min.css" />"
 	rel="stylesheet">
-<link rel="stylesheet" href="<c:url value="/resources/assets/css/ace.min.css"/>" class="ace-main-stylesheet" id="main-ace-style" />
+<link rel="stylesheet"
+	href="<c:url value="/resources/assets/css/ace.min.css"/>"
+	class="ace-main-stylesheet" id="main-ace-style" />
 <link href="<c:url value="/resources/assets/css/ace-skins.min.css" />"
 	rel="stylesheet">
 <link href="<c:url value="/resources/assets/css/ace-rtl.min.css" />"
@@ -125,8 +127,7 @@
 						<li class=""><a href="/mobilestore/list-product"> <i
 								class="menu-icon fa fa-caret-right"></i> Danh sách sản phẩm
 						</a> <b class="arrow"></b></li>
-					</ul>
-				</li>
+					</ul></li>
 
 				<li class="nav nav-list"><a href="#" class="dropdown-toggle">
 						<i class="fa fa-shopping-bag" aria-hidden="true"></i> <span
@@ -369,17 +370,14 @@
 									</div>
 									<div class="col-md-2">
 										<label class="col-form-label">Thao tác</label>
-
 										<button class="btn btn-success btn-themchitiet"
-											style="height: 34px;">Thêm</button>
+											style="height: 34px; width: 60px">Thêm</button>
 									</div>
 								</div>
 								<hr>
 							</div>
-
-
 						</div>
-						<div id="chitietsanpham_clone" class="chitietsanpham">
+						<div id="chitietsanpham_clone" class="chitietsanpham" hidden>
 							<div class="row">
 								<div class="col-md-4">
 									<label class="col-form-label">Màu </label><br> <select
@@ -405,7 +403,7 @@
 								<div class="col-md-2">
 									<label class="col-form-label">Thao tác</label>
 									<button class="btn btn-success btn-themchitiet"
-										style="height: 34px;">Thêm</button>
+										style="height: 34px; width: 60px">Thêm</button>
 								</div>
 							</div>
 							<hr>

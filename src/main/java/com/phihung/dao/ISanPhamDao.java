@@ -12,4 +12,6 @@ public interface ISanPhamDao {
 	public SanPham LayChiTietSanPhamTheoMa(int masanpham);
 	
 	public void xoaSanPham(int masanpham);
+	
+	public void themSanPham(SanPham sanpham);
 }

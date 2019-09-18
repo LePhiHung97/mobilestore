@@ -31,4 +31,9 @@ public class SanPhamServiceImpl implements ISanPhamService {
 		sanPhamDao.xoaSanPham(masanpham);
 	}
 
+	public void themSanPham(SanPham sanpham) {
+		sanPhamDao.themSanPham(sanpham);
+		
+	}
+
 }
