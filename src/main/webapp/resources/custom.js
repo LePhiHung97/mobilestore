@@ -27,22 +27,21 @@
 
         //Thêm sản phẩm vào giỏ hàng
         $(".btn-giohang").click(function () {
-            
             var machitietsanpham = $(this).attr("data-chitietsanpham");
             var mamau = $(this).closest("tr").find(".mau").attr("data-mau");
             var tenmau = $(this).closest("tr").find(".mau").text();
             var masize = $(this).closest("tr").find(".size").attr("data-size");
             var tensize = $(this).closest("tr").find(".size").text();
             var soluong = $(this).closest("tr").find(".soluong").text();
-            var masp = $("#tensp").attr("data-value");
+            var masanpham = $("#tensp").attr("data-value");
             var tensp = $("#tensp").text();
             var giatien = $("#giatien").attr("data-value");
 
             $.ajax({
-                url: "http://localhost:8080/mobilestore/api/AddToCart",
+                url: "http://localhost:8080/mobilestore/api/add-to-cart",
                 type: "GET",
                 data: {
-                    masp: masp,
+                    masanpham: masanpham,
                     masize: masize,
                     mamau: mamau,
                     tenmau: tenmau,
@@ -102,7 +101,7 @@
             var masp = $(this).closest("tr").find(".sp").attr("data-masp");
 
             $.ajax({
-                url:"http://localhost:8080/api/CapNhatGioHang",
+                url:"http://localhost:8080/mobilestore/api/CapNhatGioHang",
                 type:"GET",
                 data:{
                     masp:masp,
