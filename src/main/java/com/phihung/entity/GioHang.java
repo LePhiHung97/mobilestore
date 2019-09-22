@@ -11,10 +11,11 @@ public class GioHang {
     String tenmau;
     String tensize;
     int soluong;
+    String hinhsanpham;
 
     public GioHang(){}
 
-    public GioHang(int masp, int masize, int mamau, String tensp, String giatien, String tenmau, String tensize, int soluong,int machitietsanpham) {
+    public GioHang(int masp, int masize, int mamau, String tensp, String giatien, String tenmau, String tensize, int soluong,int machitietsanpham,String hinhsanpham) {
         this.masp = masp;
         this.masize = masize;
         this.mamau = mamau;
@@ -24,6 +25,7 @@ public class GioHang {
         this.tensize = tensize;
         this.soluong = soluong;
         this.machitietsanpham = machitietsanpham;
+        this.hinhsanpham = hinhsanpham;
     }
 
     public int getMasp() {
@@ -98,6 +100,15 @@ public class GioHang {
         this.machitietsanpham = machitietsanpham;
     }
 
+	public String getHinhsanpham() {
+		return hinhsanpham;
+	}
+
+	public void setHinhsanpham(String hinhsanpham) {
+		this.hinhsanpham = hinhsanpham;
+	}
+    
+  
 
 
 }

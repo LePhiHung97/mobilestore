@@ -1,0 +1,14 @@
+package com.phihung.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+public class ThanhToanController {
+
+	@RequestMapping(value="/pay")
+	public String Default() {
+		return "pay";
+		
+	}
+}

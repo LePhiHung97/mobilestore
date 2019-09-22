@@ -36,6 +36,7 @@
             var masanpham = $("#tensp").attr("data-value");
             var tensp = $("#tensp").text();
             var giatien = $("#giatien").attr("data-value");
+            var hinhsanpham = $("#hinhsanpham").attr("data-value");
 
             $.ajax({
                 url: "http://localhost:8080/mobilestore/api/add-to-cart",
@@ -50,18 +51,23 @@
                     giatien: giatien,
                     soluong: soluong,
                     machitietsanpham:machitietsanpham,
+                    hinhsanpham:hinhsanpham
                 },
                 success: function (value) {
-                    // $("#giohang").find("div").addClass("product-number");
-                    // $("#giohang").find("div").html("<span>"+value+"</span>");
-                    $(".giohang").html("<span>" + value + "</span>");
-
+                	alert("Đã thêm sản phẩm vào giỏ!");
+                   
+                	//$("#product-number-temp").setAttribute("style","height: 20px; text-align: center; position: absolute; width: 28px; font-size: 11px; border-radius: 40px; background: red; line-height: 22px; margin-top: -25px; margin-left: 10px; color: white;")
+                   
                 }
             });
         });
 
         //Tính tổng tiền của tất cả sản phẩm
-        GanTongTien();
+        var size = 0;
+        if(size > 0){
+        	GanTongTien();
+        }
+       
         function GanTongTien(isEventChange)
         {
             var tongtien = 0;
@@ -101,7 +107,7 @@
             var masp = $(this).closest("tr").find(".sp").attr("data-masp");
 
             $.ajax({
-                url:"http://localhost:8080/mobilestore/api/CapNhatGioHang",
+                url:"http://localhost:8080/mobilestore/api/update-cart",
                 type:"GET",
                 data:{
                     masp:masp,
@@ -123,7 +129,7 @@
             var masp = $(this).closest("tr").find(".sp").attr("data-masp");
 
             $.ajax({
-                url:"http://localhost:8080/api/XoaGioHang",
+                url:"http://localhost:8080/mobilestore/api/delete-cart",
                 type:"GET",
                 data:{
                     masp:masp,
@@ -131,11 +137,21 @@
                     mamau:mamau,
                 },
                 success: function (value) {
+                   alert(value);
                    self.closest("tr").remove();
-                   GanTongTien(true);
+                   $.ajax({
+                       url: "http://localhost:8080/mobilestore/api/update-session-cart",
+                       type: "GET",
+                       success: function (data) {
+                    	   size = data;
+                       }
+                   });
+                   if(size > 0)
+                	   GanTongTien(true);
                 }
             });
         });
+        
 
         //Xóa sản phẩm
         $(".btn-xoa").click(function () {

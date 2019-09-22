@@ -35,8 +35,8 @@ public class ChiTietSanPhamController {
         Set<ChiTietSanPham> chiTietSanPham = sanPham.getChitietsanpham();
         List<DanhMucSanPham> danhMucSanPhamList = danhMucService.layDanhSachDanhMuc();
 
-        if(null != httpSession.getAttribute("giohangList")) {
-            List<GioHang> gioHangList = (List<GioHang>) httpSession.getAttribute("giohangList");
+        if(null != httpSession.getAttribute("mycart")) {
+            List<GioHang> gioHangList = (List<GioHang>) httpSession.getAttribute("mycart");
             modelMap.addAttribute("soluongsanphammua",gioHangList.size());
         }
         modelMap.addAttribute("sanpham",sanPham);
