@@ -116,22 +116,21 @@
 			<div class="col-md-4 order-md-2 mb-4">
 				<h4 class="d-flex justify-content-between align-items-center mb-3">
 					Giỏ hàng của bạn <span
-						class="badge badge-secondary badge-pill">3</span>
+						class="badge badge-secondary badge-pill">${soluongsanphammua}</span>
 				</h4>
 				<ul class="list-group mb-3">
 					<c:forEach var="gioHang" items="${gioHangs}">
 						<li
 							class="list-group-item d-flex justify-content-between lh-condensed">
 							<div>
-								<h6 class="my-0">gioHang.tensanpham</h6>
-								<small class="text-muted">gioHang.tensize</small>
-							</div> <span class="text-muted">gioHang.giatien</span>
+								<h6 class="my-0">${gioHang.tensp}</h6>
+								<small class="text-muted">${gioHang.tensize}</small>
+							</div><br> <span class="text-muted">${gioHang.giatien}</span>
 						</li>
 					</c:forEach>
 					
 
-					<li class="list-group-item d-flex justify-content-between"><span>Total
-							(USD)</span> <strong>$20</strong></li>
+					<li class="list-group-item d-flex justify-content-between"><span>Tổng tiền</span> <strong>${tongtien }</strong></li>
 				</ul>
 
 
@@ -181,6 +180,7 @@
 					<hr class="mb-4">
 					<button class="btn btn-primary btn-lg btn-block" type="submit">Xác
 						nhận</button>
+						
 				</form>
 			</div>
 		</div>

@@ -19,9 +19,15 @@ public class ThanhToanController {
 			List<GioHang> gioHangs = (List<GioHang>) httpSession.getAttribute("mycart");
 			modelMap.addAttribute("soluongsanphammua", gioHangs.size());
 			modelMap.addAttribute("gioHangs", gioHangs);
-			
+			int tongTien = 0;
+			for(GioHang item : gioHangs)
+				tongTien += Integer.parseInt(item.getGiatien());
+			modelMap.addAttribute("tongtien",tongTien);
+			return "payment";
 		}
-		return "payment";
+		else
+			return "/mycart";
+		
 		
 		
 		

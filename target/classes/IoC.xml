@@ -23,7 +23,7 @@
 		<property name="url"
 			value="jdbc:mysql://localhost:3306/clothingstore" />
 		<property name="username" value="root" />
-		<property name="password" value="hungcfc9397" />
+		<property name="password" value="hunglp9397" />
 	</bean>
 
 	<bean id="sessionFactory"
