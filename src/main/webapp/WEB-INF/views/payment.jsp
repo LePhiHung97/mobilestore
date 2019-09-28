@@ -8,7 +8,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <jsp:include page="header.jsp"></jsp:include>
 <link rel="stylesheet" href="<c:url value="/resources/css/style.css"/>">
-<link rel="stylesheet" href="<c:url value="/resources/css/form-validation.css"/>">
+<link rel="stylesheet"
+	href="<c:url value="/resources/css/form-validation.css"/>">
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"
 	type="text/javascript"></script>
@@ -16,26 +17,27 @@
 	src="<c:url value="/resources/custom.js"/>"></script>
 <script type="text/javascript"
 	src="<c:url value="/resources/jquery/alert.js"/>"></script>
-	<script type="text/javascript"
+<script type="text/javascript"
 	src="<c:url value="/resources/form-validation.js"/>"></script>
-	<link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/checkout/">
-	
-	<style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-      }
+<link rel="canonical"
+	href="https://getbootstrap.com/docs/4.3/examples/checkout/">
 
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-    </style>
+<style>
+.bd-placeholder-img {
+	font-size: 1.125rem;
+	text-anchor: middle;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+@media ( min-width : 768px) {
+	.bd-placeholder-img-lg {
+		font-size: 3.5rem;
+	}
+}
+</style>
 </head>
 <body>
 	<div class="container-fluid">
@@ -108,47 +110,31 @@
 		</nav>
 	</div>
 	<div class="container">
-		
+
 
 		<div class="row">
 			<div class="col-md-4 order-md-2 mb-4">
 				<h4 class="d-flex justify-content-between align-items-center mb-3">
-					<span class="text-muted">Giỏ hàng của bạn</span> <span
+					Giỏ hàng của bạn <span
 						class="badge badge-secondary badge-pill">3</span>
 				</h4>
 				<ul class="list-group mb-3">
-					<li
-						class="list-group-item d-flex justify-content-between lh-condensed">
-						<div>
-							<h6 class="my-0">Product name</h6>
-							<small class="text-muted">Brief description</small>
-						</div> <span class="text-muted">$12</span>
-					</li>
-					<li
-						class="list-group-item d-flex justify-content-between lh-condensed">
-						<div>
-							<h6 class="my-0">Second product</h6>
-							<small class="text-muted">Brief description</small>
-						</div> <span class="text-muted">$8</span>
-					</li>
-					<li
-						class="list-group-item d-flex justify-content-between lh-condensed">
-						<div>
-							<h6 class="my-0">Third item</h6>
-							<small class="text-muted">Brief description</small>
-						</div> <span class="text-muted">$5</span>
-					</li>
-					<li class="list-group-item d-flex justify-content-between bg-light">
-						<div class="text-success">
-							<h6 class="my-0">Promo code</h6>
-							<small>EXAMPLECODE</small>
-						</div> <span class="text-success">-$5</span>
-					</li>
+					<c:forEach var="gioHang" items="${gioHangs}">
+						<li
+							class="list-group-item d-flex justify-content-between lh-condensed">
+							<div>
+								<h6 class="my-0">gioHang.tensanpham</h6>
+								<small class="text-muted">gioHang.tensize</small>
+							</div> <span class="text-muted">gioHang.giatien</span>
+						</li>
+					</c:forEach>
+					
+
 					<li class="list-group-item d-flex justify-content-between"><span>Total
 							(USD)</span> <strong>$20</strong></li>
 				</ul>
 
-				
+
 			</div>
 			<div class="col-md-8 order-md-1">
 				<h4 class="mb-3">Thông tin hóa đơn</h4>
@@ -158,54 +144,54 @@
 							<label for="firstName">Họ và tên</label> <input type="text"
 								class="form-control" id="firstName" placeholder="" value=""
 								required>
-							<div class="invalid-feedback">Valid first name is required.
-							</div>
-						</div>
-						
-					</div>
-
-					<div class="mb-3">
-						<label for="username">Số điện thoại</label>
-						<div class="input-group">
-							<input type="text" class="form-control" id="username"
-								placeholder="Username" required>
+							<div class="invalid-feedback"></div>
 						</div>
 					</div>
+					<br>
 
 					<div class="mb-3">
-						<label for="email">Email <span class="text-muted">Bắt buộc</span></label>
-						<input type="email" class="form-control" id="email"
+						<label for="sodienthoai">Số điện thoại </label> <input type="text"
+							class="form-control" id="sodienthoai">
+					</div>
+					<br>
+
+					<div class="mb-3">
+						<label for="email">Email <span class="text-muted">(Bắt
+								buộc)</span></label> <input type="email" class="form-control" id="email"
 							placeholder="you@example.com">
 					</div>
+					<br>
 
 					<div class="mb-3">
 						<label for="address">Địa chỉ 1</label> <input type="text"
 							class="form-control" id="address" placeholder="1234 Main St"
 							required>
-						<div class="invalid-feedback">Please enter your shipping
-							address.</div>
+						<div class="invalid-feedback"></div>
 					</div>
+					<br>
 
 					<div class="mb-3">
-						<label for="address2">Địa chỉ 2 <span class="text-muted">(Nếu có)</span></label>
-						<input type="text" class="form-control" id="address2"
+						<label for="address2">Địa chỉ 2 <span class="text-muted">(Nếu
+								có)</span></label> <input type="text" class="form-control" id="address2"
 							placeholder="Apartment or suite">
 					</div>
-
 					
+
+
 					<hr class="mb-4">
-					<button class="btn btn-primary btn-lg btn-block" type="submit">Xác nhận</button>
+					<button class="btn btn-primary btn-lg btn-block" type="submit">Xác
+						nhận</button>
 				</form>
 			</div>
 		</div>
 
-	
+
 	</div>
 	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-	
+
 	<script src="<c:url value="/resources/jquery/alert.js"/>"></script>
 	<jsp:include page="footer.jsp"></jsp:include>
-	
+
 
 
 </body>
