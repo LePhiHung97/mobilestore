@@ -20,11 +20,6 @@
 <!-- 
  END TeST
   -->
-
-
-
-<link rel="icon" type="image/png"
-	href="<c:url value="/resources/images/icon_detail.png"/>" />
 <title>Giỏ hàng</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <jsp:include page="header.jsp"></jsp:include>
@@ -225,7 +220,7 @@
 						
 					</div>
 					<div class="col-sm-12 col-md-6 text-right">
-						<form action="http://localhost:8080/mobilestore/pay">
+						<form action="http://localhost:8080/mobilestore/payment">
 							<input type="submit" value="Thanh toán"
 								class="btn btn-lg btn-block btn-success text-uppercase" />
 						</form>

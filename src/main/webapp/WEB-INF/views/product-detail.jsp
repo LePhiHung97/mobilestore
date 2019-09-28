@@ -77,8 +77,9 @@
 									</c:when>
 								
 									<c:otherwise>
-										<div id="product-number-temp">
-											
+										<div class="product-number"
+											style="height: 20px; text-align: center; position: absolute; width: 28px; font-size: 11px; border-radius: 40px; background: red; line-height: 22px; margin-top: -25px; margin-left: 10px; color: white;">
+											<span>0</span>
 										</div>
 									</c:otherwise>
 								</c:choose>  

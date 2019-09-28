@@ -60,8 +60,23 @@
 								<li><a href="login/">Đăng nhập </a></li>
 							</c:otherwise>
 						</c:choose>
-						<li><a href="#"><span
-								class="glyphicon glyphicon-shopping-cart"></span></a></li>
+						<li><a href="/mobilestore/mycart/"><span
+								class="glyphicon glyphicon-shopping-cart"></span> 
+								 <c:choose>
+									<c:when test="${soluongsanphammua >0}">
+										<div class="product-number"
+											style="height: 20px; text-align: center; position: absolute; width: 28px; font-size: 11px; border-radius: 40px; background: red; line-height: 22px; margin-top: -25px; margin-left: 10px; color: white;">
+											<span>${soluongsanphammua}</span>
+										</div>
+									</c:when>
+								
+									<c:otherwise>
+										<div id="product-number-temp">
+											
+										</div>
+									</c:otherwise>
+								</c:choose>  
+						</a></li>
 					</ul>
 				</div>
 				<!-- /.navbar-collapse -->

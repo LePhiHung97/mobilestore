@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class ThanhToanController {
 
-	@RequestMapping(value="/pay")
+	@RequestMapping(value="/payment")
 	public String Default() {
-		return "pay";
+		return "payment";
 		
 	}
 }

@@ -55,6 +55,14 @@
                 },
                 success: function (value) {
                 	alert("Đã thêm sản phẩm vào giỏ!");
+                	 $.ajax({
+                         url: "http://localhost:8080/mobilestore/detail/"+masanpham,
+                         type: "GET",
+                         success: function (data) {
+                        	 $("#product-number-temp").html(data);
+                         }
+                     });
+                	
                    
                 	//$("#product-number-temp").setAttribute("style","height: 20px; text-align: center; position: absolute; width: 28px; font-size: 11px; border-radius: 40px; background: red; line-height: 22px; margin-top: -25px; margin-left: 10px; color: white;")
                    

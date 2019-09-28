@@ -44,4 +44,6 @@ public class ChiTietSanPhamController {
 
         return "product-detail";
     }
+    
+    
 }

@@ -14,12 +14,12 @@ import com.phihung.entity.GioHang;
 public class GioHangController {
 	@RequestMapping(value="/mycart")
     public String DanhSachSanPhamTrongGio(HttpSession httpSession , ModelMap modelMap){
-        if( null != httpSession.getAttribute("mycart"));
-        {
-            List<GioHang>gioHangs = (List<GioHang>)httpSession.getAttribute("mycart");
-            modelMap.addAttribute("soluongsanphammua",gioHangs.size());
-            modelMap.addAttribute("gioHangs",gioHangs);
-        }
-        return "mycart";
+		if (null != httpSession.getAttribute("mycart")) {
+			List<GioHang> gioHangs = (List<GioHang>) httpSession.getAttribute("mycart");
+			modelMap.addAttribute("soluongsanphammua", gioHangs.size());
+			modelMap.addAttribute("gioHangs", gioHangs);
+			return "mycart";
+		}
+        return "redirect:/";
     }
 }
