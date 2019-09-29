@@ -1,11 +1,14 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+
 <html>
 <head>
 <link rel="icon" type="image/png"
 	href="/resources/images/icon_detail.png" />
 <title>Thanh toán</title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <jsp:include page="header.jsp"></jsp:include>
 <link rel="stylesheet" href="<c:url value="/resources/css/style.css"/>">
 <link rel="stylesheet"
@@ -60,24 +63,23 @@
 				<div class="collapse navbar-collapse"
 					id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
-						<li><a href="#">Trang chủ</a></li>
+						<li><a href="/mobilestore/">Trang chủ</a></li>
 						<li class="dropdown"><a href="#" class="dropdown-toggle"
 							data-toggle="dropdown" role="button" aria-haspopup="true"
 							aria-expanded="false">Sản phẩm <span class="caret"></span></a>
 							<ul class="dropdown-menu ">
-								<c:forEach var="value" items="${danhmucsanpham}">
+								<c:forEach var="value" items="${danhMucSanPhams}">
 									<li><a
-										href="/mobilestore/product/${value.madanhmuc}/${value.tendanhmuc}">${value.tendanhmuc}</a></li>
+										href="product/${value.madanhmuc}/${value.tendanhmuc}">${value.tendanhmuc}</a></li>
 								</c:forEach>
 							</ul></li>
 						<li><a href="#">Dịch vụ</a></li>
 						<li><a href="#">Liên hệ</a></li>
 					</ul>
-
 					<ul class="nav navbar-nav navbar-right">
 						<c:choose>
 							<c:when test="${user != null}">
-								<li><a href="#"><span style="color: blue">
+								<li><a href="#">Xin chào, <span style="color: blue">
 											${user.tendangnhap}</span></a></li>
 								<li><a href="/mobilestore/logout">Đăng xuất</a></li>
 							</c:when>
@@ -87,7 +89,6 @@
 								<li><a href="login/">Đăng nhập </a></li>
 							</c:otherwise>
 						</c:choose>
-
 						<li><a href="/mobilestore/mycart/"><span
 								class="glyphicon glyphicon-shopping-cart"></span> <c:choose>
 									<c:when test="${soluongsanphammua >0}">
@@ -101,7 +102,6 @@
 										<div id="product-number-temp"></div>
 									</c:otherwise>
 								</c:choose> </a></li>
-						<li><a href="#">${username}</a></li>
 					</ul>
 				</div>
 				<!-- /.navbar-collapse -->
@@ -110,13 +110,10 @@
 		</nav>
 	</div>
 	<div class="container">
-
-
 		<div class="row">
 			<div class="col-md-4 order-md-2 mb-4">
 				<h4 class="d-flex justify-content-between align-items-center mb-3">
-					Giỏ hàng của bạn <span
-						class="badge badge-secondary badge-pill">${soluongsanphammua}</span>
+					Giỏ hàng của bạn <span class="badge badge-secondary badge-pill">${soluongsanphammua}</span>
 				</h4>
 				<ul class="list-group mb-3">
 					<c:forEach var="gioHang" items="${gioHangs}">
@@ -125,63 +122,47 @@
 							<div>
 								<h6 class="my-0">${gioHang.tensp}</h6>
 								<small class="text-muted">${gioHang.tensize}</small>
-							</div><br> <span class="text-muted">${gioHang.giatien}</span>
+							</div>
+							<br> <span class="text-muted">${gioHang.giatien}</span>
 						</li>
 					</c:forEach>
-					
 
-					<li class="list-group-item d-flex justify-content-between"><span>Tổng tiền</span> <strong>${tongtien }</strong></li>
+
+					<li class="list-group-item d-flex justify-content-between"><span>Tổng
+							tiền</span> <strong>${tongtien }</strong></li>
 				</ul>
 
 
 			</div>
 			<div class="col-md-8 order-md-1">
 				<h4 class="mb-3">Thông tin hóa đơn</h4>
-				<form class="needs-validation" novalidate>
-					<div class="row">
-						<div class="col-md-6 mb-3">
-							<label for="firstName">Họ và tên</label> <input type="text"
-								class="form-control" id="firstName" placeholder="" value=""
-								required>
-							<div class="invalid-feedback"></div>
-						</div>
+				<form:form method="POST" modelAttribute="dathang"
+					action="/mobilestore/payment">
+					<div class="form-group">
+						<label for="tennguoinhan">Tên người nhận</label>
+						<form:input type="text" path="tennguoinhan" class="form-control"></form:input>
+						<form:errors path="tennguoinhan"></form:errors>
+					</div>
+
+					<div class="form-group">
+						<label for="sodienthoai">Số điện thoại</label>
+						<form:input type="text" path="sodienthoai" class="form-control"></form:input>
+						<form:errors path="sodienthoai"></form:errors>
+
+					</div>
+					<div class="form-group">
+						<label for="">Địa chỉ giao hàng</label>
+						<form:input type="text" path="diachigiaohang" class="form-control"></form:input>
+						<form:errors path="diachigiaohang"></form:errors>
 					</div>
 					<br>
-
-					<div class="mb-3">
-						<label for="sodienthoai">Số điện thoại </label> <input type="text"
-							class="form-control" id="sodienthoai">
-					</div>
-					<br>
-
-					<div class="mb-3">
-						<label for="email">Email <span class="text-muted">(Bắt
-								buộc)</span></label> <input type="email" class="form-control" id="email"
-							placeholder="you@example.com">
-					</div>
-					<br>
-
-					<div class="mb-3">
-						<label for="address">Địa chỉ 1</label> <input type="text"
-							class="form-control" id="address" placeholder="1234 Main St"
-							required>
-						<div class="invalid-feedback"></div>
-					</div>
-					<br>
-
-					<div class="mb-3">
-						<label for="address2">Địa chỉ 2 <span class="text-muted">(Nếu
-								có)</span></label> <input type="text" class="form-control" id="address2"
-							placeholder="Apartment or suite">
-					</div>
-					
-
-
+					<p>Phương thức vận chuyển : <strong>FreeShip</strong></p>
+					<p>Phương thức thanh toán : <strong>Thanh toán khi giao hàng (COD)</strong></p>
 					<hr class="mb-4">
 					<button class="btn btn-primary btn-lg btn-block" type="submit">Xác
 						nhận</button>
-						
-				</form>
+
+				</form:form>
 			</div>
 		</div>
 
@@ -191,8 +172,5 @@
 
 	<script src="<c:url value="/resources/jquery/alert.js"/>"></script>
 	<jsp:include page="footer.jsp"></jsp:include>
-
-
-
 </body>
 </html>

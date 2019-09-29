@@ -3,13 +3,13 @@ package com.phihung.dao.impl;
 import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
+import org.hibernate.SessionFactory;import org.springframework.transaction.annotation.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Repository;
 import org.hibernate.query.Query;
-import org.springframework.transaction.annotation.Transactional;
+
 
 import com.phihung.dao.IDanhMucDao;
 import com.phihung.entity.DanhMucSanPham;

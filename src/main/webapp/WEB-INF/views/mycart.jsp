@@ -221,7 +221,7 @@
 					</div>
 					<div class="col-sm-12 col-md-6 text-right">
 						<form action="http://localhost:8080/mobilestore/payment">
-							<input type="submit" value="Thanh toán"
+							<input type="submit" value="Đặt hàng"
 								class="btn btn-lg btn-block btn-success text-uppercase" />
 						</form>
 					</div>
