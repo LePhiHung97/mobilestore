@@ -19,9 +19,9 @@ import com.phihung.entity.DonHang;
 import com.phihung.entity.GioHang;
 import com.phihung.entity.NguoiDung;
 import com.phihung.service.IChiTietDonHangService;
+import com.phihung.service.IChiTietSanPhamService;
 import com.phihung.service.IDatHangService;
 import com.phihung.service.ISanPhamService;
-import com.phihung.utils.EmailUtil;
 import com.phihung.validator.DatHangValidator;
 
 @Controller
@@ -35,6 +35,9 @@ public class ThanhToanController {
 	
 	@Autowired
 	ISanPhamService sanPhamService;
+	
+	@Autowired
+	IChiTietSanPhamService chitietsanphamService;
 	
 	@Autowired
 	IChiTietDonHangService chiTietDonHangService;
@@ -82,7 +85,7 @@ public class ThanhToanController {
 			for(GioHang item : gioHangs) {
 				chiTietDonHang = new ChiTietDonHang();
 				chiTietDonHang.setDonhang(donDatHang);
-				chiTietDonHang.setSanpham(sanPhamService.LayChiTietSanPhamTheoMa(item.getMasp()));
+				chiTietDonHang.setChitietsanpham(chitietsanphamService.layChiTietSanPhamTheoMa(item.getMachitietsanpham()));
 				chiTietDonHang.setSoluong(item.getSoluong());
 				chiTietDonHang.setGiatien(item.getGiatien());
 				int thanhTien = item.getSoluong() * Integer.parseInt(item.getGiatien());
@@ -91,12 +94,8 @@ public class ThanhToanController {
 				chiTietDonHangService.themChiTietDonHang(chiTietDonHang);
 			}
 			
-			model.addAttribute("insert-success", "Thông tin đơn hàng đã được gửi tới email của bạn !");
-			String message = "";
-			EmailUtil.sendMail(nguoiDung.getEmail(), message);
-			HttpSession cartSession = (HttpSession) httpSession.getAttribute("mycart");
-			cartSession.invalidate();
-			return "redirect:/home";
+			httpSession.removeAttribute("mycart");
+			return "redirect:/";
 		}
 		return "redirect:/home";
 	}

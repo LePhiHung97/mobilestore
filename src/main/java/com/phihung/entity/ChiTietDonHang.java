@@ -20,8 +20,8 @@ public class ChiTietDonHang {
 	private DonHang donhang;
 
 	@OneToOne
-	@JoinColumn(name = "masanpham")
-	private SanPham sanpham;
+	@JoinColumn(name = "machitietsanpham")
+	private ChiTietSanPham chitietsanpham;
 
 	private int soluong;
 
@@ -29,7 +29,6 @@ public class ChiTietDonHang {
 		return soluong;
 	}
 
-	
 	public void setSoluong(int soluong) {
 		this.soluong = soluong;
 	}
@@ -54,12 +53,12 @@ public class ChiTietDonHang {
 		this.donhang = donhang;
 	}
 
-	public SanPham getSanpham() {
-		return sanpham;
+	public ChiTietSanPham getChitietsanpham() {
+		return chitietsanpham;
 	}
 
-	public void setSanpham(SanPham sanpham) {
-		this.sanpham = sanpham;
+	public void setChitietsanpham(ChiTietSanPham chitietsanpham) {
+		this.chitietsanpham = chitietsanpham;
 	}
 
 	public String getGiatien() {
